@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-
-import python_for_me
+if __name__ == '__main__':
+    import python_for_me
