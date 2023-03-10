@@ -1,12 +1,8 @@
 #!/usr/bin/python3
-if __name__ == '__main__':
+if __name__ == "__main__":
     import hidden_4
-
-    #print the names in the module
-    names = sorted(dir(hidden_4))
-
-    #iterate through the file
-    for name in names:
+    # Print sorted name from directory
+    for name in sorted(dir(hidden_4)):
+        # print only names that do not start with __
         if name[:2] != '__':
-            #print only names that do not start with '__'
             print("{}".format(name))
