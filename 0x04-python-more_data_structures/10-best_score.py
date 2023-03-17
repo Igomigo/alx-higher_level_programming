@@ -7,4 +7,6 @@ def best_score(my_dict):
         if max_v is None or v > max_v:
             max_v = v
             max_k = k
+        else:
+            return None
     return max_k
