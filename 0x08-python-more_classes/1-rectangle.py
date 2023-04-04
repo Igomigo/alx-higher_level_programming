@@ -4,16 +4,8 @@
 
 class Rectangle:
     """ A rectangle with atributes and methods """
-
     def __init__(self, width=0, height=0):
-        """
-        A class method with two private attributes
-
-        Args:
-           width: represents the width of the rectangle
-           height: represents the height of the rectangle
-        """
-
+        """ initializes the rectangle """
         self.height = height
         self.width = width
 
@@ -27,7 +19,7 @@ class Rectangle:
         """ A setter with validation to modify the value of the width """
         if type(value) is not int:
              raise TypeError("width must be an integer")
-        if value < 0:
+        elif value < 0:
             raise ValueError("width must be >= 0")
         self.__width = value
 
@@ -41,6 +33,6 @@ class Rectangle:
         """ setter with validation to set the height of the rectangle """
         if type(value) is not int:
              raise TypeError("height must be an integer")
-        if value < 0:
+        elif value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
