@@ -9,12 +9,12 @@ Importing function from module:
 
 Testing for module docstring:
         >>> mod = __import__("0-add_integer").__doc__
-        len(mod) > 1
+	>>> len(mod) > 1
         True
 
 Testing for function docstring:
         >>> func = __import__("0-add_integer").add_integer.__doc__
-        len(func) > 1
+        >>> len(func) > 1
         True
 
 Testing for two positive integers:
@@ -64,14 +64,14 @@ Testing for float(NaN):
         ValueError: cannot convert float NaN to integer
 
 Testing for float(infinity):
-        >>> add_integer(float(inf), 2)
+        >>> add_integer(float("inf"), 4)
         Traceback (most recent call last):
         ...
-        OverFlowError: cannot convert float infinity to integer
+        OverflowError: cannot convert float infinity to integer
 
 Testing for list or dictionary passed as args:
         >>> add_integer([1], 4)
-        Traceback (most recent call last)
+        Traceback (most recent call last):
         ...
         TypeError: a must be an integer
 
@@ -80,6 +80,7 @@ Testing for none number passed:
         98
 
 Testing for None:
-        >>> Traceback (most recent call last):
+        >>> add_integer(None)
+        Traceback (most recent call last):
         ...
         TypeError: a must be an integer
