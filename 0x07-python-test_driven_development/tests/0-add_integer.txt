@@ -31,7 +31,7 @@ Testing for two negative integers:
 
 Testing for single integer argument:
         >>> add_integer(1)
-        1
+        99
 
 Testing for integer and string:
         >>> add_integer(2, "b")
@@ -76,5 +76,10 @@ Testing for list or dictionary passed as args:
         TypeError: a must be an integer
 
 Testing for none number passed:
-        >>> add_integer()
-        0
+        >>> add_integer(0)
+        98
+
+Testing for None:
+        >>> Traceback (most recent call last):
+        ...
+        TypeError: a must be an integer
