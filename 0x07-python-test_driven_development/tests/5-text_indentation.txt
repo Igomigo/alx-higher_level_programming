@@ -1,0 +1,67 @@
+From ``5-text_indentation`` module
+==================================
+
+Using ``text_indentation`` function
+-----------------------------------
+
+Importing the function from the module:
+         >>> text_indentation = __import__("5-text_indentation").text_indentation
+
+Checking for module docstring:
+         >>> m = __import__("5-text_indentation").__doc__
+         >>> len(m) > 5
+         True
+
+Checking for function docstring:
+         >>> f = __import__("5-text_indentation").text_indentation.__doc__
+         >>> len(f) > 5
+         True
+
+Testing with no args:
+         >>> text_indentation()
+         Traceback (most recent call last):
+         ...
+         TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+Testing for none string arg:
+         >>> text_indentation(3452346164)
+         Traceback (most recent call last):
+         ...
+         TypeError: text must be a string
+
+Testing for actual text arg:
+         >>> text_indentation("why is soft eng amazing? simply because it is: you can tell me more. can you")
+         why is soft eng amazing?
+         <BLANKLINE>
+         simply because it is:
+         <BLANKLINE>
+         you can tell me more.
+         <BLANKLINE>
+         can you
+
+Testing for ending in special characters:
+         >>> text_indentation("why is soft eng amazing? simply because it is: you can tell me more. can you.")
+         why is soft eng amazing?
+         <BLANKLINE>
+         simply because it is:
+         <BLANKLINE>
+         you can tell me more.
+         <BLANKLINE>
+         can you.
+         <BLANKLINE>
+
+Testing for one word:
+         >>> text_indentation("Software")
+         Software
+
+Testing for newline at the ending:
+         >>> text_indentation("Hello, how are you?\n")
+         Hello, how are you?
+         <BLANKLINE>
+         <BLANKLINE>
+
+Testing for newline at the beginning:
+         >>> text_indentation("\nHello, how are you?")
+         <BLANKLINE>
+         Hello, how are you?
+         <BLANKLINE>
