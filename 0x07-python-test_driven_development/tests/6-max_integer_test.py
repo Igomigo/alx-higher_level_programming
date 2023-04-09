@@ -46,5 +46,11 @@ class TestMaxInteger(unittest.TestCase):
         with self.assertRaises(TypeError):
             max_integer([1, "a", 3, 4, 5])
 
+    def test_string(self):
+        self.assertEqual(max_integer(["a", "z"]), "z")
+
+    def test_neg_float(self):
+        self.assertEqual(max_integer([-5.55, -66.66, -111.1]), -5.55)
+
 if __name__ == '__main__':
     unittest.main()
