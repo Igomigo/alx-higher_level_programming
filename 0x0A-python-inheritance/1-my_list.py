@@ -19,4 +19,5 @@ class MyList(list):
         super().__init__()
 
     def print_sorted(self):
+        """ Method that sorts the list """
         print(sorted(self))

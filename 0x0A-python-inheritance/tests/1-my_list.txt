@@ -5,7 +5,7 @@ Using ``Mylist`` class and ``print_sorted`` funcion
 ---------------------------------------------------
 
 Importing the class from the module:
-       >>> Mylist = __import__("1-my_list").Mylist
+       >>> MyList = __import__("1-my_list").MyList
 
 Testing for module docstring:
        >>> mod = __import__("1-my_list").__doc__
@@ -13,12 +13,17 @@ Testing for module docstring:
        True
 
 Testing for class docstring:
-       >>> cls = __import__("1-my_list").Mylist.__doc__
+       >>> cls = __import__("1-my_list").MyList.__doc__
        >>> len(cls) > 5
        True
 
+Testing for method docstring:
+       >>> mtd = __import__("1-my_list").MyList.print_sorted.__doc__
+       >>> len(mtd) > 5
+       True
+
 Testing that Mylist inherits from list:
-       >>> issubclass(Mylist, list)
+       >>> issubclass(MyList, list)
        True
 
 Testing that list appending works:
@@ -36,7 +41,7 @@ Testing the print_sorted method:
        [1, 2, 3, 4, 5]
 
 Testing print_sorted witth an already sorted list:
-       >>> my_list = Mylist()
+       >>> my_list = MyList()
        >>> my_list.append(1)
        >>> my_list.append(2)
        >>> my_list.append(3)
@@ -44,7 +49,7 @@ Testing print_sorted witth an already sorted list:
        [1, 2, 3]
 
 Testing for negative integers:
-       >>> my_list = Mylist()
+       >>> my_list = MyList()
        >>> my_list.append(-3)
        >>> my_list.append(-2)
        >>> my_list.append(-1)
@@ -53,6 +58,6 @@ Testing for negative integers:
        [-5, -3, -2, -1]
 
 Testing for an empty list:
-       >>> my_list = Mylist()
+       >>> my_list = MyList()
        >>> my_list.print_sorted()
        []
