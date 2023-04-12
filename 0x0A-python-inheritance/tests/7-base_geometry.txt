@@ -1,0 +1,58 @@
+From ``7-base_geometry`` module
+===============================
+
+Using ``BaseGeometry`` class
+----------------------------
+
+Importing the class from the module:
+       >>> BaseGeometry = __import__("7-base_geometry").BaseGeometry
+
+Testing for module docstring:
+       >>> m = __import__("7-base_geometry").__doc__
+       >>> len(m) > 5
+       True
+
+Testing for class docstring:
+       >>> cls = __import__("7-base_geometry").BaseGeometry.__doc__
+       >>> len(cls) > 5
+       True
+
+Testing the area method in class:
+       >>> t = BaseGeometry()
+       >>> t.area()
+       Traceback (most recent call last):
+       ...
+       Exception: area() is not implemented
+
+Testing the integer_validator method with string and string args:
+       >>> t.integer_validator("ade", "name")
+       Traceback (most recent call last):
+       ...
+       TypeError: ade must be an integer
+
+Testing the integer_validator method with 0 as secong arg:
+       >>> t.integer_validator("name", 0)
+       Traceback (most recent call last):
+       ...
+       ValueError: name must be greater than 0
+
+Testing the integer_validator method with a negative second int arg:
+       >>> t.integer_validator("name", -23)
+       Traceback (most recent call last):
+       ...
+       ValueError: name must be greater than 0
+
+Testing the integer_validator method without any arg:
+       >>> t.integer_validator()
+       Traceback (most recent call last):
+       ...
+       TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+Testing the integer_validator method witth string and positive int:
+       >>> t.integer_validator("name", 3)
+       
+Testing the integer validator method with float as second arg:
+       >>> t.integer_validator("float", 3.4)
+       Traceback (most recent call last):
+       ...
+       TypeError: float must be an integer
