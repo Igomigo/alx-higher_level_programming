@@ -1,0 +1,58 @@
+From ``1-my_list`` module
+=========================
+
+Using ``Mylist`` class and ``print_sorted`` funcion
+---------------------------------------------------
+
+Importing the class from the module:
+       >>> Mylist = __import__("1-my_list").Mylist
+
+Testing for module docstring:
+       >>> mod = __import__("1-my_list").__doc__
+       >>> len(mod) > 5
+       True
+
+Testing for class docstring:
+       >>> cls = __import__("1-my_list").Mylist.__doc__
+       >>> len(cls) > 5
+       True
+
+Testing that Mylist inherits from list:
+       >>> issubclass(Mylist, list)
+       True
+
+Testing that list appending works:
+       >>> my_list = MyList()
+       >>> my_list.append(1)
+       >>> my_list.append(4)
+       >>> my_list.append(2)
+       >>> my_list.append(3)
+       >>> my_list.append(5)
+       >>> print(my_list)
+       [1, 4, 2, 3, 5]
+
+Testing the print_sorted method:
+       >>> my_list.print_sorted()
+       [1, 2, 3, 4, 5]
+
+Testing print_sorted witth an already sorted list:
+       >>> my_list = Mylist()
+       >>> my_list.append(1)
+       >>> my_list.append(2)
+       >>> my_list.append(3)
+       >>> my_list.print_sorted()
+       [1, 2, 3]
+
+Testing for negative integers:
+       >>> my_list = Mylist()
+       >>> my_list.append(-3)
+       >>> my_list.append(-2)
+       >>> my_list.append(-1)
+       >>> my_list.append(-5)
+       >>> my_list.print_sorted()
+       [-5, -3, -2, -1]
+
+Testing for an empty list:
+       >>> my_list = Mylist()
+       >>> my_list.print_sorted()
+       []
