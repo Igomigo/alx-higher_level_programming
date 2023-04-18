@@ -8,8 +8,8 @@ from models.rectangle import Rectangle
 import unittest
 
 
-class Test_Rectangle_Class(unittest.TestCase):
-    """Test class for the rectangle class components"""
+class Test_Rectangle_attributes(unittest.TestCase):
+    """Test class for the rectangle class attributes"""
 
     def test_no_args_passed(self):
         with self.assertRaises(TypeError):
@@ -208,3 +208,25 @@ class Test_Rectangle_Class(unittest.TestCase):
     def test_frozenset_y(self):
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             Rectangle(1, 2, 3, frozenset({1, 2, 3, 1}))
+
+class Test_Rectangle_Area_Method(unittest.TestCase):
+    """Unittests for testing the area method of the Rectangle class."""
+
+    def test_area_small(self):
+        a = Rectangle(5, 3, 0, 0, 0)
+        self.assertEqual(15, a.area())
+
+    def test_area_large_values(self):
+        a = Rectangle(999999999999999, 999999999999999999, 0, 0, 1)
+        self.assertEqual(999999999999998999000000000000001, a.area())
+
+    def test_area_changed_attributes(self):
+        a = Rectangle(2, 10, 1, 1, 1)
+        a.width = 7
+        a.height = 14
+        self.assertEqual(98, a.area())
+
+    def test_area_one_arg(self):
+        a = Rectangle(2, 10, 1, 1, 1)
+        with self.assertRaises(TypeError):
+            a.area(1)
