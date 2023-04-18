@@ -6,6 +6,8 @@ module that contains the rectangle test cases
 from models.base import Base
 from models.rectangle import Rectangle
 import unittest
+import io
+import sys
 
 
 class Test_Rectangle_attributes(unittest.TestCase):
@@ -230,3 +232,14 @@ class Test_Rectangle_Area_Method(unittest.TestCase):
         a = Rectangle(2, 10, 1, 1, 1)
         with self.assertRaises(TypeError):
             a.area(1)
+
+    """Test for display method"""
+    def test_one_args_passed(self):
+        a = Rectangle(5, 1, 2, 4, 7)
+        with self.assertRaises(TypeError):
+            a.display(1)
+
+    def test_2_args_passed(self):
+        a = Rectangle(5, 1, 2, 4, 7)
+        with self.assertRaises(TypeError):
+            a.display(1, 2)
