@@ -233,16 +233,92 @@ class Test_Rectangle_Area_Method(unittest.TestCase):
         with self.assertRaises(TypeError):
             a.area(1)
 
-    """Test for display method"""
-    def test_one_args_passed(self):
-        a = Rectangle(5, 1, 2, 4, 7)
-        with self.assertRaises(TypeError):
-            a.display(1)
+class TestRectangle_stdout(unittest.TestCase):
+    """tests for __str__ and display methods of Rectangle class."""
 
-    def test_2_args_passed(self):
-        a = Rectangle(5, 1, 2, 4, 7)
+    @staticmethod
+    def capture_stdout(rect, method):
+        """captures and returns text printed to stdout.
+
+        Args:
+            rect (Rectangle): Rectangle to print to stdout.
+            method (str): method to run on rect.
+
+        Returns:
+            text printed to stdout by calling method on sq.
+        """
+        capture = io.StringIO()
+        sys.stdout = capture
+        if method == "print":
+            print(rect)
+        else:
+            rect.display()
+        sys.stdout = sys.__stdout__
+        return capture
+
+    # Test __str__ method
+    def test_str_method_print_width_height(self):
+        r = Rectangle(4, 6)
+        capture = TestRectangle_stdout.capture_stdout(r, "print")
+        correct = "[Rectangle] ({}) 0/0 - 4/6\n".format(r.id)
+        self.assertEqual(correct, capture.getvalue())
+
+    def test_str_method_width_height_x(self):
+        r = Rectangle(5, 5, 1)
+        correct = "[Rectangle] ({}) 1/0 - 5/5".format(r.id)
+        self.assertEqual(correct, r.__str__())
+
+    def test_str_method_width_height_x_y(self):
+        r = Rectangle(1, 8, 2, 4)
+        correct = "[Rectangle] ({}) 2/4 - 1/8".format(r.id)
+        self.assertEqual(correct, str(r))
+
+    def test_str_method_width_height_x_y_id(self):
+        r = Rectangle(13, 21, 2, 4, 7)
+        self.assertEqual("[Rectangle] (7) 2/4 - 13/21", str(r))
+
+    def test_str_method_changed_attributes(self):
+        r = Rectangle(7, 7, 0, 0, [4])
+        r.width = 15
+        r.height = 1
+        r.x = 8
+        r.y = 10
+        self.assertEqual("[Rectangle] ([4]) 8/10 - 15/1", str(r))
+
+    def test_str_method_one_arg(self):
+        r = Rectangle(1, 2, 3, 4, 5)
         with self.assertRaises(TypeError):
-            a.display(1, 2)
+            r.__str__(1)
+
+    #Test for display method
+
+    def test_display_width_height(self):
+        rec = Rectangle(2, 3, 0, 0, 0)
+        capture = TestRectangle_stdout.capture_stdout(rec, "display")
+        self.assertEqual("##\n##\n##\n", capture.getvalue())
+
+    def test_display_width_height_x(self):
+        rec = Rectangle(3, 2, 1, 0, 1)
+        capture = TestRectangle_stdout.capture_stdout(rec, "display")
+        self.assertEqual(" ###\n ###\n", capture.getvalue())
+
+    def test_display_width_height_y(self):
+        rec = Rectangle(4, 5, 0, 1, 0)
+        capture = TestRectangle_stdout.capture_stdout(rec, "display")
+        display = "\n####\n####\n####\n####\n####\n"
+        self.assertEqual(display, capture.getvalue())
+
+    def test_display_width_height_x_y(self):
+        rec = Rectangle(2, 4, 3, 2, 0)
+        capture = TestRectangle_stdout.capture_stdout(rec, "display")
+        display = "\n\n   ##\n   ##\n   ##\n   ##\n"
+        self.assertEqual(display, capture.getvalue())
+
+    def test_display_one_arg(self):
+        r = Rectangle(5, 1, 2, 4, 7)
+        with self.assertRaises(TypeError):
+            r.display(1)
+
 
 class TestRectangle_update_args(unittest.TestCase):
     """tests for the update method of the Rectangle class."""
