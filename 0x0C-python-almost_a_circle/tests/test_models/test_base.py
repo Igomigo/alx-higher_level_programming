@@ -349,5 +349,13 @@ class TestBase_load_from_file_csv(unittest.TestCase):
         list_squares_output = Square.load_from_file_csv()
         self.assertEqual(str(s1), str(list_squares_output[0]))
 
+    def test_load_from_file_csv_no_file(self):
+        output = Square.load_from_file_csv()
+        self.assertEqual([], output)
+
+    def test_load_from_file_csv_more_than_one_arg(self):
+        with self.assertRaises(TypeError):
+            Base.load_from_file_csv([], 1)
+
 if __name__ == "__main__":
     unittest.main()
