@@ -6,4 +6,4 @@ SELECT id, name
 	   FROM states
 	  WHERE name = 'California'
 )
-0RDER BY cities.id ASC;
+ORDER BY cities.id ASC;
