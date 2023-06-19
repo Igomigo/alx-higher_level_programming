@@ -15,7 +15,8 @@ if __name__ == '__main__':
     Connecting to the database to perform some operations
     """
 
-    db_url = f"mysql+mysqldb://{argv[1]}:{argv[2]}@localhost:3306/{argv[3]}"
+    db_url = "mysql+mysqldb://{}:{}@localhost:3306/{}".format(
+        argv[1], argv[2], argv[3])
     engine = create_engine(db_url)
 
     Session = sessionmaker(bind=engine)
@@ -25,7 +26,7 @@ if __name__ == '__main__':
     cities = session.query(State, City).filter(State.id == City.state_id)\
         .order_by(City.id).all()
     for state, city in cities:
-        print(f"{state.name}: ({city.id}) {city.name}")
+        print("{}: ({}) {}".format(state.name, city.id, city.name))
 
     """Commit the session"""
     session.commit()
