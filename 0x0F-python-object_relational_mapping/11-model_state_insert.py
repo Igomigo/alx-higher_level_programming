@@ -27,10 +27,6 @@ if __name__ == "__main__":
     session.add(new_state)
     session.commit()
 
-    """query the database"""
-    state = session.query(State).order_by(State.id).all()
-
-    if state is not None:
-        for s in state:
-            print('{}: {}'.format(s.id, s.name))
+    """print newly added state object"""
+    print("{}".format(new_state.id))
     session.close()
