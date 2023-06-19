@@ -6,9 +6,7 @@ to the database with the sqlalchemy ORM
 
 
 from sqlalchemy import Integer, Column, String, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
+from model_state import Base, State
 
 
 class City(Base):

@@ -4,8 +4,8 @@ A script that prints all City objects from the database hbtn_0e_14_usa
 """
 
 
-from model_city import Base, City
-from model_state import State
+from model_city import City
+from model_state import State, Base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sys import argv
