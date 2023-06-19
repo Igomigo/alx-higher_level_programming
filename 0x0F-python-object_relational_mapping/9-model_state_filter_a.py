@@ -24,7 +24,7 @@ if __name__ == '__main__':
     session = Session()
 
     query = session.query(State).filter(State.name.like("%a%"))\
-            .order_by(State.id).all()
+        .order_by(State.id).all()
 
     if query is not None:
         for q in query:
