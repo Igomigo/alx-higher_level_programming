@@ -19,7 +19,7 @@ if __name__ == '__main__':
     db_cursor.execute(
        "SELECT cities.id, cities.name FROM states JOIN cities ON \
                states.id = cities.state_id WHERE states.name \
-               LIKE BINARY %(name)s ORDER BY cities.id ASC".{'name': argv[4]})
+               LIKE BINARY %(name)s ORDER BY cities.id ASC"{'name': argv[4]})
 
     rows_selected = db_cursor.fetchall()
 
