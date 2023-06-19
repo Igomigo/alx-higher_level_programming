@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
     """Query the database"""
     cities = session.query(State, City).filter(State.id == City.state_id)\
-            .order_by(City.id).all()
+        .order_by(City.id).all()
     for state, city in cities:
         print(f"{state.name}: ({city.id}) {city.name}")
 
