@@ -17,12 +17,12 @@ if __name__ == '__main__':
     db_cursor = db_conn.cursor()
 
     db_cursor.execute(
-       "SELECT cities.id, cities.name FROM cities JOIN states ON \
+       "SELECT cities.name FROM cities JOIN states ON \
                states.id = cities.state_id WHERE states.name \
                LIKE BINARY %(name)s ORDER BY \
                cities.id ASC", {'name': argv[4]})
 
     rows_selected = db_cursor.fetchall()
 
-    for row in rows_selected:
-        print(row)
+    if rows_selected is not None:
+        print(", ".join(rows_selected))
