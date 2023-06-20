@@ -24,7 +24,7 @@ if __name__ == '__main__':
 
     """Query the database"""
     cities = session.query(City, State).join(State)
-    for state, city in cities:
+    for state, city in cities.all()
         print("{}: ({}) {}".format(state.name, city.id, city.name))
 
     """Commit the session"""
