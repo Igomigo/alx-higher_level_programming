@@ -9,7 +9,6 @@ from sys import argv
 
 
 if __name__ == '_main__':
-    
     letter = "" if len(sys.argv) == 1 else sys.argv[1]
     payload = {"q": letter}
 
